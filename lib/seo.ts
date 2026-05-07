@@ -16,9 +16,8 @@ export const siteConfig = {
     "Développeur Full-Stack & Tech Lead — Next.js, FastAPI, SaaS multi-tenant.",
   locale: "fr_FR",
   links: {
-    github: "https://github.com/wissemkarboub",
-    linkedin: "https://www.linkedin.com/in/wissem-karboub",
-    twitter: "https://twitter.com/wissemkarboub",
+    github: "https://github.com/Wissem95",
+    linkedin: "https://www.linkedin.com/in/wissem-karboub-5b10aa212/",
   },
 } as const;
 
