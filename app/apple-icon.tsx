@@ -14,12 +14,16 @@ export default function AppleIcon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "linear-gradient(135deg, #C8B89A 0%, #8B7355 100%)",
-          color: "#0D0D0D",
-          fontSize: 96,
-          fontWeight: 800,
+          backgroundColor: "#0D0D0D",
+          backgroundImage:
+            "linear-gradient(135deg, #1A1A1A 0%, #0D0D0D 100%)",
+          border: "8px solid #C8B89A",
+          borderRadius: 38,
+          color: "#C8B89A",
+          fontSize: 110,
+          fontWeight: 900,
           fontFamily: "system-ui, sans-serif",
-          letterSpacing: -4,
+          letterSpacing: -5,
         }}
       >
         WK
