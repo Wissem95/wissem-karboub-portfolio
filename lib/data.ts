@@ -160,9 +160,9 @@ export const stats: Stat[] = [
 ];
 
 export const social = {
-  github: "#",
-  linkedin: "#",
-  email: "contact@example.com",
+  github: "https://github.com/wissemkarboub",
+  linkedin: "https://www.linkedin.com/in/wissem-karboub",
+  email: "wissemkarboub@gmail.com",
 };
 
 export const marqueeItems = [
