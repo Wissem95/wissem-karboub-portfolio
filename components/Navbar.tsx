@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import Logo from "./Logo";
 
 const links = [
   { label: "À propos", href: "#about" },
@@ -55,10 +54,13 @@ export default function Navbar() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6">
         <a
           href="#hero"
-          className="group flex items-center font-syne text-lg font-extrabold tracking-tight"
+          className="group flex items-center gap-2 font-syne text-2xl font-extrabold tracking-tight"
           aria-label="Wissem Karboub — Accueil"
         >
-          <Logo size={40} className="transition-transform group-hover:scale-105" />
+          <span className="relative">
+            <span className="text-accent">W</span>
+            <span className="text-text">K</span>
+          </span>
         </a>
 
         <div className="hidden items-center gap-1 md:flex">

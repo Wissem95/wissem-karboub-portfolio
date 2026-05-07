@@ -1,5 +1,4 @@
 import { siteConfig } from "@/lib/seo";
-import Logo from "./Logo";
 
 const navLinks = [
   { href: "#about", label: "À propos" },
@@ -30,12 +29,11 @@ export default function Footer() {
     >
       <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 md:grid-cols-4">
         <div className="md:col-span-2">
-          <div className="flex items-center gap-3">
-            <Logo size={48} />
-            <p className="font-syne text-2xl font-extrabold">
-              Wissem Karboub<span className="text-accent">.</span>
-            </p>
-          </div>
+          <p className="font-syne text-2xl font-extrabold">
+            <span className="text-accent">W</span>
+            <span className="text-text">K</span>
+            <span className="ml-2">Wissem Karboub<span className="text-accent">.</span></span>
+          </p>
           <p className="mt-4 max-w-md text-sm leading-relaxed text-text-muted">
             Développeur Full-Stack & Tech Lead basé à Paris. Conception de
             SaaS multi-tenant, applications web et mobiles. Tech Lead chez
