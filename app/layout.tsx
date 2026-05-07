@@ -92,7 +92,6 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     firstName: "Wissem",
     lastName: "Karboub",
-    username: "wissemkarboub",
     images: [
       {
         url: "/opengraph-image",
@@ -108,7 +107,6 @@ export const metadata: Metadata = {
     title: `${siteConfig.name} — Développeur Full-Stack & Tech Lead`,
     description: siteConfig.description,
     images: ["/opengraph-image"],
-    creator: "@wissemkarboub",
   },
   robots: {
     index: true,
@@ -205,11 +203,7 @@ const personLd = {
     skills:
       "Next.js, React, TypeScript, FastAPI, NestJS, Laravel, Stripe Connect, Supabase, PostgreSQL, Docker, Flutter, architecture SaaS multi-tenant",
   },
-  sameAs: [
-    siteConfig.links.github,
-    siteConfig.links.linkedin,
-    siteConfig.links.twitter,
-  ].filter(Boolean),
+  sameAs: [siteConfig.links.github, siteConfig.links.linkedin].filter(Boolean),
 };
 
 const websiteLd = {
