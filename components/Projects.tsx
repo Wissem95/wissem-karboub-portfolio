@@ -26,7 +26,7 @@ function ProjectCard({ p, index }: { p: Project; index: number }) {
       <div className="relative h-[55%] overflow-hidden">
         <motion.img
           src={p.image}
-          alt={p.name}
+          alt={`${p.name} — projet ${p.category} par Wissem Karboub, stack ${p.stack.join(", ")}`}
           loading="lazy"
           className="h-full w-full object-cover"
           style={{

@@ -159,10 +159,12 @@ export const stats: Stat[] = [
   { value: 1, label: "SaaS en production" },
 ];
 
+import { siteConfig } from "./seo";
+
 export const social = {
-  github: "#",
-  linkedin: "#",
-  email: "contact@example.com",
+  github: siteConfig.links.github,
+  linkedin: siteConfig.links.linkedin,
+  email: siteConfig.email,
 };
 
 export const marqueeItems = [

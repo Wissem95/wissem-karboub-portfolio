@@ -44,6 +44,14 @@ export default function Hero() {
     >
       <SpaceScene />
 
+      <span className="sr-only">
+        Wissem Karboub — Développeur Full-Stack et Tech Lead à Paris.
+        Spécialisé en Next.js, React, TypeScript, FastAPI, NestJS, Laravel,
+        Flutter, Stripe Connect et Supabase. Master CTO &amp; Tech Lead HETIC
+        2026. Disponible en alternance et en freelance pour SaaS multi-tenant,
+        applications web et mobiles, intégrations IA.
+      </span>
+
       <motion.div
         style={{ y: titleY, scale: titleScale, opacity: titleOpacity }}
         className="relative z-10 mx-auto max-w-5xl px-6 text-center"
