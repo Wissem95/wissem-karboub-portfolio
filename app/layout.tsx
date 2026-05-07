@@ -126,6 +126,9 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-icon", sizes: "180x180", type: "image/png" }],
   },
   manifest: "/manifest.webmanifest",
+  verification: {
+    google: "AuTsPeSX1Wm9NIbYCNeir2dtkjrtV6x7332ZnKjkl2g",
+  },
 };
 
 export const viewport: Viewport = {
