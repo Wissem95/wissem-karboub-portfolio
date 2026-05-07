@@ -55,13 +55,10 @@ export default function Navbar() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6">
         <a
           href="#hero"
-          className="group flex items-center gap-2.5 font-syne text-lg font-extrabold tracking-tight"
+          className="group flex items-center font-syne text-lg font-extrabold tracking-tight"
           aria-label="Wissem Karboub — Accueil"
         >
-          <Logo size={36} className="transition-transform group-hover:scale-105" />
-          <span className="hidden font-syne text-base text-text sm:inline">
-            Wissem Karboub
-          </span>
+          <Logo size={40} className="transition-transform group-hover:scale-105" />
         </a>
 
         <div className="hidden items-center gap-1 md:flex">
