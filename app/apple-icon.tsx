@@ -14,15 +14,28 @@ export default function AppleIcon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "linear-gradient(135deg, #C8B89A 0%, #8B7355 100%)",
-          color: "#0D0D0D",
-          fontSize: 96,
-          fontWeight: 800,
-          fontFamily: "system-ui, sans-serif",
-          letterSpacing: -4,
+          backgroundColor: "#0D0D0D",
+          backgroundImage:
+            "linear-gradient(135deg, #1A1A1A 0%, #0D0D0D 100%)",
+          borderRadius: 38,
         }}
       >
-        WK
+        <div
+          style={{
+            display: "flex",
+            fontSize: 92,
+            fontWeight: 900,
+            fontFamily: "system-ui, sans-serif",
+            letterSpacing: -3,
+            lineHeight: 1,
+            backgroundImage:
+              "linear-gradient(100deg, #F5F3EE 0%, #F5F3EE 30%, #C8B89A 50%, #F5F3EE 70%, #F5F3EE 100%)",
+            backgroundClip: "text",
+            color: "transparent",
+          }}
+        >
+          WK
+        </div>
       </div>
     ),
     { ...size },
