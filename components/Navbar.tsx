@@ -57,10 +57,7 @@ export default function Navbar() {
           className="group flex items-center gap-2 font-syne text-2xl font-extrabold tracking-tight"
           aria-label="Wissem Karboub — Accueil"
         >
-          <span className="relative">
-            <span className="text-accent">W</span>
-            <span className="text-text">K</span>
-          </span>
+          <span className="hero-shimmer relative">WK</span>
         </a>
 
         <div className="hidden items-center gap-1 md:flex">
