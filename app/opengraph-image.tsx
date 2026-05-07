@@ -45,15 +45,26 @@ export default function OgImage() {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                background:
-                  "linear-gradient(135deg, #C8B89A 0%, #8B7355 100%)",
-                color: "#0D0D0D",
-                fontWeight: 800,
-                fontSize: 26,
-                letterSpacing: -1,
+                backgroundColor: "#0D0D0D",
+                backgroundImage:
+                  "linear-gradient(135deg, #1A1A1A 0%, #0D0D0D 100%)",
               }}
             >
-              WK
+              <div
+                style={{
+                  display: "flex",
+                  fontWeight: 900,
+                  fontSize: 26,
+                  letterSpacing: -1,
+                  lineHeight: 1,
+                  backgroundImage:
+                    "linear-gradient(100deg, #F5F3EE 0%, #F5F3EE 30%, #C8B89A 50%, #F5F3EE 70%, #F5F3EE 100%)",
+                  backgroundClip: "text",
+                  color: "transparent",
+                }}
+              >
+                WK
+              </div>
             </div>
             <div
               style={{
