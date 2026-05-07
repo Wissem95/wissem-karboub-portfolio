@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Syne, JetBrains_Mono } from "next/font/google";
 import { siteConfig } from "@/lib/seo";
+import { faqs } from "@/lib/faqs";
 import "./globals.css";
 
 const inter = Inter({
@@ -246,48 +247,14 @@ const faqLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "@id": `${siteConfig.url}/#faq`,
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Qui est Wissem Karboub ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Wissem Karboub est un Développeur Full-Stack et Tech Lead basé à Paris. Il pilote 3 projets SaaS chez CoZetik et intègre le Master CTO & Tech Lead à HETIC en 2026. Spécialisé en Next.js, FastAPI, NestJS, Stripe Connect et architectures SaaS multi-tenant.",
-      },
+  mainEntity: faqs.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.a,
     },
-    {
-      "@type": "Question",
-      name: "Quelles technologies maîtrise Wissem Karboub ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Stack principale : Next.js, React, TypeScript côté frontend ; FastAPI, NestJS, Laravel et Node.js côté backend ; PostgreSQL, Supabase, Redis, Docker côté infra ; Stripe et Stripe Connect pour les paiements ; Flutter et React Native pour le mobile ; Three.js et WebGL pour les expériences 3D.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Wissem Karboub est-il disponible en alternance ou freelance ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Oui, Wissem Karboub est disponible en alternance dans le cadre de son Master CTO & Tech Lead à HETIC pour 2026, ainsi qu'en freelance pour des missions de développement Full-Stack, de Tech Lead, ou d'architecture SaaS.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Comment contacter Wissem Karboub ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: `Vous pouvez contacter Wissem Karboub par email à ${siteConfig.email}, via LinkedIn (${siteConfig.links.linkedin}), ou directement depuis le formulaire de contact sur ${siteConfig.url}.`,
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Quels projets a réalisé Wissem Karboub ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Parmi ses projets : HuntZenJobs (plateforme B2C d'emploi avec matching IA), FlotteQ (SaaS Fleet Management multi-tenant avec Stripe Connect), ShowroomBaby (marketplace mobile peer-to-peer), SeneRentCar (location de voitures au Sénégal), ComoRide (taxi via WhatsApp aux Comores), EcoComfort (IoT monitoring énergétique) et RobLaude (robot autonome avec vision embarquée).",
-      },
-    },
-  ],
+  })),
 };
 
 const jsonLdGraph = {
@@ -306,7 +273,6 @@ export default function RootLayout({
       className={`${inter.variable} ${syne.variable} ${jetbrains.variable}`}
     >
       <head>
-        <link rel="canonical" href={siteConfig.url} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdGraph) }}
