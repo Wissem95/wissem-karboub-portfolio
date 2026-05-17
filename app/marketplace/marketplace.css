@@ -1,0 +1,22 @@
+/* Le marketplace utilise un thème clair, distinct du portfolio (sombre). */
+html:has(.mk-root) {
+  background-color: #ffffff;
+}
+
+/* Le portfolio masque le curseur globalement : on le restaure ici. */
+.mk-root,
+.mk-root * {
+  cursor: auto;
+}
+.mk-root a,
+.mk-root button,
+.mk-root [role="button"],
+.mk-root summary,
+.mk-root label {
+  cursor: pointer;
+}
+.mk-root input,
+.mk-root textarea,
+.mk-root select {
+  cursor: auto;
+}
