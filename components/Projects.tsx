@@ -1,18 +1,36 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { projects, type Project } from "@/lib/data";
 import RevealText from "./RevealText";
+import ProjectModal from "./ProjectModal";
 
-function ProjectCard({ p, index }: { p: Project; index: number }) {
+function ProjectCard({
+  p,
+  index,
+  onOpen,
+}: {
+  p: Project;
+  index: number;
+  onOpen: () => void;
+}) {
   return (
     <motion.article
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-20%" }}
       transition={{ duration: 0.6, ease: [0.2, 0.8, 0.2, 1] }}
-      className="group relative flex h-[78vh] w-[80vw] max-w-[600px] shrink-0 flex-col overflow-hidden rounded-3xl border border-border bg-card md:h-[72vh] md:w-[55vw] lg:w-[42vw] xl:w-[36vw]"
+      onClick={onOpen}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onOpen();
+        }
+      }}
+      className="group relative flex h-[78vh] w-[80vw] max-w-[600px] shrink-0 cursor-pointer flex-col overflow-hidden rounded-3xl border border-border bg-card md:h-[72vh] md:w-[55vw] lg:w-[42vw] xl:w-[36vw]"
     >
       <div className="absolute left-6 top-6 z-20 flex items-center gap-3">
         <span className="rounded-full border border-accent/40 bg-accent/15 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-accent backdrop-blur-md">
@@ -74,6 +92,7 @@ function ProjectCard({ p, index }: { p: Project; index: number }) {
                   href={p.github}
                   target="_blank"
                   rel="noreferrer"
+                  onClick={(e) => e.stopPropagation()}
                   className="font-mono text-xs text-text-muted transition-colors hover:text-accent"
                 >
                   GitHub →
@@ -84,6 +103,7 @@ function ProjectCard({ p, index }: { p: Project; index: number }) {
                   href={p.live}
                   target="_blank"
                   rel="noreferrer"
+                  onClick={(e) => e.stopPropagation()}
                   className="font-mono text-xs text-accent transition-colors hover:text-accent-dark"
                 >
                   Voir le live →
@@ -111,6 +131,7 @@ function ProjectCard({ p, index }: { p: Project; index: number }) {
 
 export default function Projects() {
   const ref = useRef<HTMLDivElement>(null);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end end"],
@@ -156,7 +177,12 @@ export default function Projects() {
               className="flex gap-6 pl-[5vw] pr-[10vw] will-change-transform"
             >
               {projects.map((p, i) => (
-                <ProjectCard key={p.name} p={p} index={i} />
+                <ProjectCard
+                  key={p.name}
+                  p={p}
+                  index={i}
+                  onOpen={() => setOpenIndex(i)}
+                />
               ))}
               <div className="flex w-[40vw] shrink-0 items-center justify-center pr-12">
                 <a
@@ -189,6 +215,13 @@ export default function Projects() {
           </div>
         </div>
       </div>
+
+      <ProjectModal
+        project={openIndex !== null ? projects[openIndex] : null}
+        index={openIndex ?? 0}
+        total={totalProjects}
+        onClose={() => setOpenIndex(null)}
+      />
     </section>
   );
 }
