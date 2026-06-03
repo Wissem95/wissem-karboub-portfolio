@@ -53,8 +53,7 @@ export type Project = {
   results?: string[];
 };
 
-const UNSPLASH = (keywords: string) =>
-  `https://source.unsplash.com/featured/1200x1500/?${encodeURIComponent(keywords)}`;
+const IMG = (seed: string) => `https://picsum.photos/seed/${seed}/1200/1500`;
 
 export const projects: Project[] = [
   {
@@ -65,7 +64,7 @@ export const projects: Project[] = [
     category: "SaaS",
     live: "https://jobs.huntzen.co",
     featured: true,
-    image: UNSPLASH("career,office,team,laptop"),
+    image: IMG("huntzen-jobs-ai-matching"),
     role: "Tech Lead Fullstack",
     duration: "6 mois",
     year: "2025",
@@ -93,7 +92,7 @@ export const projects: Project[] = [
     stack: ["NestJS", "React", "Stripe Connect", "Docker"],
     category: "SaaS",
     featured: true,
-    image: UNSPLASH("fleet,truck,logistics,dashboard"),
+    image: IMG("flotteq-fleet-mgmt"),
     role: "Tech Lead Fullstack",
     duration: "8 mois",
     year: "2024 → 2025",
@@ -120,7 +119,7 @@ export const projects: Project[] = [
       "Marketplace mobile peer-to-peer dédiée aux articles bébé d'occasion. Chat, paiement, modération.",
     stack: ["Flutter", "Firebase"],
     category: "Mobile",
-    image: UNSPLASH("baby,kids,nursery,marketplace"),
+    image: IMG("showroombaby-marketplace"),
     role: "Développeur Mobile Fullstack",
     duration: "4 mois",
     year: "2024",
@@ -146,7 +145,7 @@ export const projects: Project[] = [
       "Plateforme de location de voitures au Sénégal. Réservation, paiement local, back-office agence.",
     stack: ["Next.js", "Laravel", "MySQL"],
     category: "Freelance",
-    image: UNSPLASH("car,rental,road,africa"),
+    image: IMG("senerentcar-rental"),
     role: "Freelance Fullstack",
     duration: "3 mois",
     year: "2024",
@@ -171,7 +170,7 @@ export const projects: Project[] = [
       "Application taxi aux Comores opérée via WhatsApp. Bot conversationnel et dispatch automatique.",
     stack: ["React", "Node.js", "WhatsApp API"],
     category: "Freelance",
-    image: UNSPLASH("taxi,city,night,driver"),
+    image: IMG("comoride-whatsapp-taxi"),
     role: "Freelance Fullstack",
     duration: "2 mois",
     year: "2023",
@@ -196,7 +195,7 @@ export const projects: Project[] = [
       "Site vitrine premium dark mode pour cabinet de conseil. Animations Framer Motion, performances 95+ Lighthouse.",
     stack: ["Next.js", "Tailwind", "Framer Motion"],
     category: "Freelance",
-    image: UNSPLASH("consulting,office,minimal,dark"),
+    image: IMG("mentarys-premium-dark"),
     role: "Freelance Frontend",
     duration: "1 mois",
     year: "2025",
@@ -221,7 +220,7 @@ export const projects: Project[] = [
       "Solution IoT de monitoring énergétique en temps réel. Capteurs RuuviTag, MQTT, dashboard analytique.",
     stack: ["Laravel", "React", "MQTT", "RuuviTag"],
     category: "Académique",
-    image: UNSPLASH("iot,sensor,energy,electronics"),
+    image: IMG("ecocomfort-iot-mqtt"),
     role: "Lead Tech projet étudiant",
     duration: "4 mois",
     year: "2023",
@@ -246,7 +245,7 @@ export const projects: Project[] = [
       "Robot autonome avec vision embarquée. Pilotage ROS2 sur Jetson Nano, interface de supervision web.",
     stack: ["ROS2", "Node.js", "React", "Jetson Nano"],
     category: "Académique",
-    image: UNSPLASH("robot,ai,robotics,futuristic"),
+    image: IMG("roblaude-ros2-robot"),
     role: "Dev embarqué + supervision web",
     duration: "5 mois",
     year: "2024",
