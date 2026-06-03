@@ -20,9 +20,12 @@ export default function ProjectModal({ project, index, total, onClose }: Props) 
     document.addEventListener("keydown", onKey);
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    const lenis = (window as unknown as { __lenis?: { stop: () => void; start: () => void } }).__lenis;
+    lenis?.stop();
     return () => {
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = prevOverflow;
+      lenis?.start();
     };
   }, [project, onClose]);
 
@@ -89,7 +92,10 @@ export default function ProjectModal({ project, index, total, onClose }: Props) 
               />
             </div>
 
-            <div className="flex flex-1 flex-col gap-6 overflow-y-auto p-6 md:p-10">
+            <div
+              data-lenis-prevent
+              className="flex flex-1 flex-col gap-6 overflow-y-auto p-6 md:p-10"
+            >
               <header>
                 <h3 className="font-syne text-3xl font-extrabold leading-tight md:text-5xl">
                   {project.name}
