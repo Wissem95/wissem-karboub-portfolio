@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import type { Project } from "@/lib/data";
+import ProjectMedia from "./ProjectMedia";
 
 type Props = {
   project: Project | null;
@@ -12,6 +13,8 @@ type Props = {
 };
 
 export default function ProjectModal({ project, index, total, onClose }: Props) {
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+
   useEffect(() => {
     if (!project) return;
     const onKey = (e: KeyboardEvent) => {
@@ -22,6 +25,7 @@ export default function ProjectModal({ project, index, total, onClose }: Props) 
     document.body.style.overflow = "hidden";
     const lenis = (window as unknown as { __lenis?: { stop: () => void; start: () => void } }).__lenis;
     lenis?.stop();
+    closeButtonRef.current?.focus();
     return () => {
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = prevOverflow;
@@ -48,6 +52,9 @@ export default function ProjectModal({ project, index, total, onClose }: Props) 
           />
 
           <motion.article
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="project-modal-title"
             initial={{ opacity: 0, y: 40, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.98 }}
@@ -65,6 +72,7 @@ export default function ProjectModal({ project, index, total, onClose }: Props) 
             </div>
 
             <button
+              ref={closeButtonRef}
               onClick={onClose}
               aria-label="Fermer"
               className="absolute right-6 top-6 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-border bg-bg/60 font-mono text-sm text-text-muted backdrop-blur-md transition-colors hover:border-accent/60 hover:text-accent"
@@ -72,24 +80,8 @@ export default function ProjectModal({ project, index, total, onClose }: Props) 
               ✕
             </button>
 
-            <div className="relative h-[32vh] shrink-0 overflow-hidden md:h-[36vh]">
-              <img
-                src={project.image}
-                alt={`${project.name} — ${project.category}`}
-                className="h-full w-full object-cover"
-                style={{
-                  filter:
-                    "brightness(0.65) contrast(1.05) saturate(0.55) hue-rotate(8deg)",
-                }}
-              />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
-              <div
-                className="pointer-events-none absolute inset-0 mix-blend-soft-light"
-                style={{
-                  background:
-                    "linear-gradient(135deg, rgba(200,184,154,0.35), transparent 50%, rgba(139,115,85,0.4))",
-                }}
-              />
+            <div className="relative h-[42vh] shrink-0 overflow-hidden md:h-[52vh]">
+              <ProjectMedia project={project} variant="modal" />
             </div>
 
             <div
@@ -98,7 +90,7 @@ export default function ProjectModal({ project, index, total, onClose }: Props) 
             >
               <header>
                 <h3 className="font-syne text-3xl font-extrabold leading-tight md:text-5xl">
-                  {project.name}
+                  <span id="project-modal-title">{project.name}</span>
                   {project.featured && (
                     <span className="ml-3 align-middle font-mono text-[10px] uppercase tracking-widest text-accent">
                       ★ Featured

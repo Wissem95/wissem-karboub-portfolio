@@ -38,14 +38,16 @@ export default function Home() {
       window.scrollTo(0, 0);
     }
 
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
     document.documentElement.style.overflow = "hidden";
-    const t = setTimeout(() => {
+    const timer = window.setTimeout(() => {
       setLoaded(true);
       document.documentElement.style.overflow = "";
       window.scrollTo(0, 0);
-    }, 2200);
+    }, isMobile ? 320 : 900);
+
     return () => {
-      clearTimeout(t);
+      window.clearTimeout(timer);
       document.documentElement.style.overflow = "";
     };
   }, []);
@@ -71,11 +73,11 @@ export default function Home() {
             <Experience />
           </SectionReveal>
           <Marquee items={marqueeItems} speed={50} reverse />
-          <Projects />
-          <SectionDivider />
           <SectionReveal>
             <Skills />
           </SectionReveal>
+          <SectionDivider />
+          <Projects />
           <SectionReveal>
             <Contact />
           </SectionReveal>

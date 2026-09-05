@@ -18,6 +18,7 @@ export default function CursorTrail() {
   useEffect(() => {
     if (typeof window === "undefined") return;
     if (window.matchMedia("(max-width: 768px)").matches) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const canvas = canvasRef.current;
     if (!canvas) return;

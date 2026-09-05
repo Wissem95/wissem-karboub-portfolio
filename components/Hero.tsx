@@ -31,8 +31,8 @@ export default function Hero() {
         i++;
         setTyped(TITLE.slice(0, i));
         if (i >= TITLE.length) clearInterval(t);
-      }, 50);
-    }, 2700);
+      }, 35);
+    }, 160);
     return () => clearTimeout(start);
   }, []);
 
@@ -57,9 +57,9 @@ export default function Hero() {
         className="relative z-10 mx-auto max-w-5xl px-6 text-center"
       >
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.6, duration: 0.6 }}
+          transition={{ delay: 0.08, duration: 0.45 }}
           className="mb-6 font-mono text-xs uppercase tracking-[0.3em] text-accent"
         >
           Portfolio · 2026
@@ -72,7 +72,7 @@ export default function Hero() {
           variants={{
             hidden: {},
             visible: {
-              transition: { staggerChildren: 0.04, delayChildren: 2.2 },
+              transition: { staggerChildren: 0.03, delayChildren: 0.12 },
             },
           }}
         >
@@ -102,18 +102,18 @@ export default function Hero() {
         </p>
 
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 2.6, duration: 0.6 }}
+          transition={{ delay: 0.28, duration: 0.45 }}
           className="mx-auto mt-4 max-w-2xl text-sm text-text-muted md:text-base"
         >
           Bachelor Dev Web @ HETIC · Master CTO &amp; Tech Lead 2026
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 2.8, duration: 0.6 }}
+          transition={{ delay: 0.42, duration: 0.45 }}
           className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
           <MagneticButton
@@ -134,7 +134,7 @@ export default function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 3.2, duration: 1 }}
+        transition={{ delay: 0.9, duration: 0.8 }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2"
       >
         <div className="flex h-10 w-6 items-start justify-center rounded-full border border-accent/60 p-1">

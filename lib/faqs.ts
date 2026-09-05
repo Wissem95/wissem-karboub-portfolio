@@ -5,7 +5,7 @@ export type FAQ = { q: string; a: string };
 export const faqs: FAQ[] = [
   {
     q: "Qui est Wissem Karboub ?",
-    a: "Wissem Karboub est un Développeur Full-Stack et Tech Lead basé à Paris. Il pilote 3 projets SaaS chez CoZetik et intègre le Master CTO & Tech Lead à HETIC en 2026. Spécialisé en Next.js, FastAPI, NestJS, Stripe Connect et architectures SaaS multi-tenant.",
+    a: "Wissem Karboub est un Développeur Full-Stack et Tech Lead basé à Paris. Il travaille sur des produits SaaS, des interfaces React/Next.js et des architectures backend avec FastAPI, NestJS, Laravel, Stripe et Supabase. Il intègre le Master CTO & Tech Lead à HETIC en 2026.",
   },
   {
     q: "Quelles technologies maîtrise Wissem Karboub ?",
@@ -21,6 +21,6 @@ export const faqs: FAQ[] = [
   },
   {
     q: "Quels projets a réalisé Wissem Karboub ?",
-    a: "Parmi ses projets : HuntZenJobs (plateforme B2C d'emploi avec matching IA), FlotteQ (SaaS Fleet Management multi-tenant avec Stripe Connect), ShowroomBaby (marketplace mobile peer-to-peer), SeneRentCar (location de voitures au Sénégal), ComoRide (taxi via WhatsApp aux Comores), EcoComfort (IoT monitoring énergétique) et RobLaude (robot autonome avec vision embarquée).",
+    a: "Les projets mis en avant combinent 5 captures authentiques et 3 projets encore marqués capture à fournir. Chaque fiche privilégie le contexte, le rôle, les choix techniques et la transparence sur les visuels disponibles.",
   },
 ];

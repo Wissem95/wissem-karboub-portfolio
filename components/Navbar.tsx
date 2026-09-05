@@ -7,7 +7,7 @@ const links = [
   { label: "À propos", href: "#about" },
   { label: "Expériences", href: "#experience" },
   { label: "Projets", href: "#projects" },
-  { label: "Skills", href: "#skills" },
+  { label: "Compétences", href: "#skills" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -93,7 +93,7 @@ export default function Navbar() {
           <span className="flex items-center gap-2 rounded-full border border-border bg-card/60 px-3 py-1.5 backdrop-blur">
             <span className="pulse-dot relative inline-block h-2 w-2 rounded-full bg-green-400" />
             <span className="font-mono text-[10px] uppercase tracking-widest text-text-muted">
-              Available
+              Disponible
             </span>
           </span>
         </div>
@@ -141,7 +141,7 @@ export default function Navbar() {
           <span className="mt-2 inline-flex items-center gap-2">
             <span className="pulse-dot inline-block h-2 w-2 rounded-full bg-green-400" />
             <span className="font-mono text-[10px] uppercase tracking-widest text-text-muted">
-              Available · Master 2026
+              Disponible · Master 2026
             </span>
           </span>
         </div>

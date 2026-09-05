@@ -1,8 +1,9 @@
 "use client";
 
 import { Canvas, useFrame } from "@react-three/fiber";
-import { useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
+import { useReducedMotion } from "framer-motion";
 
 const vertexShader = /* glsl */ `
   varying vec2 vUv;
@@ -130,6 +131,30 @@ function GradientPlane() {
 }
 
 export default function MeshGradient() {
+  const prefersReducedMotion = useReducedMotion();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 768px)");
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener?.("change", update);
+    return () => mq.removeEventListener?.("change", update);
+  }, []);
+
+  if (prefersReducedMotion || isMobile) {
+    return (
+      <div
+        aria-hidden
+        className="pointer-events-none fixed inset-0 -z-10"
+        style={{
+          background:
+            "radial-gradient(circle at 20% 20%, rgba(200,184,154,0.10), transparent 35%), radial-gradient(circle at 80% 80%, rgba(139,115,85,0.08), transparent 40%), #14110D",
+        }}
+      />
+    );
+  }
+
   return (
     <div
       aria-hidden

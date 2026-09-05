@@ -2,8 +2,9 @@
 
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Stars, Trail } from "@react-three/drei";
-import { useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
+import { useReducedMotion } from "framer-motion";
 
 function Planet({
   position,
@@ -433,6 +434,30 @@ function MouseDriftGroup({ children }: { children: React.ReactNode }) {
 }
 
 export default function SpaceScene() {
+  const prefersReducedMotion = useReducedMotion();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 768px)");
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener?.("change", update);
+    return () => mq.removeEventListener?.("change", update);
+  }, []);
+
+  if (prefersReducedMotion || isMobile) {
+    return (
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse at 30% 25%, rgba(200,184,154,0.10), transparent 42%), radial-gradient(ellipse at 70% 75%, rgba(139,115,85,0.08), transparent 38%), #14110D",
+        }}
+      />
+    );
+  }
+
   return (
     <div
       aria-hidden

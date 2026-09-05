@@ -5,32 +5,42 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { projects, type Project } from "@/lib/data";
 import RevealText from "./RevealText";
 import ProjectModal from "./ProjectModal";
+import ProjectMedia from "./ProjectMedia";
 
 function ProjectCard({
   p,
   index,
   onOpen,
+  layout = "rail",
 }: {
   p: Project;
   index: number;
   onOpen: () => void;
+  layout?: "rail" | "stack";
 }) {
+  const isStack = layout === "stack";
+
   return (
     <motion.article
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-20%" }}
       transition={{ duration: 0.6, ease: [0.2, 0.8, 0.2, 1] }}
-      onClick={onOpen}
       role="button"
       tabIndex={0}
+      aria-label={`Ouvrir les détails du projet ${p.name}`}
+      onClick={onOpen}
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
           onOpen();
         }
       }}
-      className="group relative flex h-[78vh] w-[80vw] max-w-[600px] shrink-0 cursor-pointer flex-col overflow-hidden rounded-3xl border border-border bg-card md:h-[72vh] md:w-[55vw] lg:w-[42vw] xl:w-[36vw]"
+      className={`group relative flex shrink-0 flex-col overflow-hidden rounded-3xl border border-border bg-card ${
+        isStack
+          ? "min-h-[620px] w-full"
+          : "h-[78vh] w-[80vw] max-w-[600px] md:h-[72vh] md:w-[55vw] lg:w-[42vw] xl:w-[36vw]"
+      }`}
     >
       <div className="absolute left-6 top-6 z-20 flex items-center gap-3">
         <span className="rounded-full border border-accent/40 bg-accent/15 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-accent backdrop-blur-md">
@@ -41,26 +51,8 @@ function ProjectCard({
         </span>
       </div>
 
-      <div className="relative h-[55%] overflow-hidden">
-        <motion.img
-          src={p.image}
-          alt={`${p.name} — projet ${p.category} par Wissem Karboub, stack ${p.stack.join(", ")}`}
-          loading="lazy"
-          className="h-full w-full object-cover"
-          style={{
-            filter: "brightness(0.65) contrast(1.05) saturate(0.55) hue-rotate(8deg)",
-          }}
-          whileHover={{ scale: 1.06 }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
-        />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
-        <div
-          className="pointer-events-none absolute inset-0 mix-blend-soft-light"
-          style={{
-            background:
-              "linear-gradient(135deg, rgba(200,184,154,0.35), transparent 50%, rgba(139,115,85,0.4))",
-          }}
-        />
+      <div className={`relative overflow-hidden ${isStack ? "h-[280px]" : "h-[55%]"}`}>
+        <ProjectMedia project={p} variant="card" />
       </div>
 
       <div className="relative flex flex-1 flex-col justify-between p-6 md:p-8">
@@ -85,8 +77,8 @@ function ProjectCard({
             ))}
           </div>
 
-          <div className="flex items-center justify-between border-t border-border pt-4">
-            <div className="flex gap-4">
+          <div className="flex items-center justify-between gap-4 border-t border-border pt-4">
+            <div className="flex flex-wrap gap-4">
               {p.github && (
                 <a
                   href={p.github}
@@ -115,11 +107,16 @@ function ProjectCard({
                 </span>
               )}
             </div>
-            {p.featured && (
-              <span className="font-mono text-[10px] uppercase tracking-widest text-accent">
-                ★ Featured
-              </span>
-            )}
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onOpen();
+              }}
+              className="shrink-0 rounded-full border border-accent/40 px-3 py-2 font-mono text-[10px] uppercase tracking-widest text-accent transition-colors hover:border-accent hover:bg-accent hover:text-bg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-card"
+            >
+              Détails
+            </button>
           </div>
         </div>
       </div>
@@ -164,12 +161,26 @@ export default function Projects() {
           </h2>
           <p className="mt-6 max-w-2xl text-text-muted">
             {totalProjects} projets — du SaaS multi-tenant à l&apos;IoT, en passant
-            par l&apos;app mobile et le robot autonome. Scroll pour parcourir.
+            par l&apos;app mobile, le robot autonome et quelques petits projets
+            vitrines. Les projets vérifiés utilisent une capture réelle ; les
+            autres sont explicitement marqués comme capture à fournir.
           </p>
         </motion.div>
       </div>
 
-      <div ref={ref} className="relative h-[420vh]">
+      <div className="mx-auto grid max-w-7xl gap-6 px-6 md:hidden">
+        {projects.map((p, i) => (
+          <ProjectCard
+            key={p.name}
+            p={p}
+            index={i}
+            layout="stack"
+            onOpen={() => setOpenIndex(i)}
+          />
+        ))}
+      </div>
+
+      <div ref={ref} className="relative hidden h-[420vh] md:block">
         <div className="sticky top-0 flex h-screen flex-col overflow-hidden">
           <div className="relative flex flex-1 items-center">
             <motion.div

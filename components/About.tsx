@@ -41,13 +41,13 @@ function Counter({ value, suffix = "" }: { value: number; suffix?: string }) {
 const techTags = [
   { name: "Next.js", icon: "▲" },
   { name: "TypeScript", icon: "TS" },
-  { name: "FastAPI", icon: "⚡" },
-  { name: "NestJS", icon: "🔺" },
-  { name: "Flutter", icon: "💙" },
-  { name: "Stripe", icon: "💳" },
-  { name: "Supabase", icon: "🟢" },
-  { name: "Docker", icon: "🐳" },
-  { name: "Groq", icon: "✨" },
+  { name: "FastAPI", icon: "API" },
+  { name: "NestJS", icon: "NX" },
+  { name: "Flutter", icon: "FL" },
+  { name: "Stripe", icon: "$" },
+  { name: "Supabase", icon: "DB" },
+  { name: "Docker", icon: "DK" },
+  { name: "Groq", icon: "AI" },
 ];
 
 export default function About() {
@@ -83,15 +83,15 @@ export default function About() {
             className="lg:col-span-3"
           >
             <p className="text-base leading-relaxed text-text-muted md:text-lg">
-              Développeur Full-Stack passionné par la conception de produits
-              complets — de l&apos;architecture à la mise en production. Tech
-              Lead à 23 ans, j&apos;ai développé des SaaS, des applications
-              mobiles et des outils métier dans des secteurs variés.
+              Je conçois des produits web complets, de l&apos;architecture à la
+              mise en production : interfaces React, APIs métier, paiements,
+              données, automatisations et parcours utilisateur.
             </p>
             <p className="mt-4 text-base leading-relaxed text-text-muted md:text-lg">
               Actuellement en alternance chez{" "}
-              <span className="text-accent">CoZetik</span>, je pilote 3 projets
-              simultanément. En 2026, j&apos;intègre le{" "}
+              <span className="text-accent">CoZetik</span>, je travaille sur des
+              projets SaaS où le frontend, le backend et l&apos;architecture
+              doivent rester cohérents. En 2026, j&apos;intègre le{" "}
               <span className="text-accent">
                 Master CTO &amp; Tech Lead à HETIC
               </span>

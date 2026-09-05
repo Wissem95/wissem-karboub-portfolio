@@ -15,7 +15,7 @@ export default function FAQ() {
           id="faq-title"
           className="mt-4 font-syne text-4xl font-extrabold md:text-5xl"
         >
-          On vous explique<span className="text-accent">.</span>
+          Réponses utiles<span className="text-accent">.</span>
         </h2>
 
         <div className="mt-12 divide-y divide-border rounded-2xl border border-border bg-card">

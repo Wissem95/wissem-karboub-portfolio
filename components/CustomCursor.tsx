@@ -12,16 +12,19 @@ export default function CustomCursor() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    if (window.matchMedia("(max-width: 768px)").matches) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
     const move = (e: MouseEvent) => {
       x.set(e.clientX);
       y.set(e.clientY);
-      if (!visible) setVisible(true);
+      setVisible(true);
     };
     const over = (e: MouseEvent) => {
       const t = e.target as HTMLElement | null;
       if (!t) return;
       const isInteractive = t.closest(
-        "a, button, [role='button'], input, textarea, [data-cursor='hover']",
+        "a, button, input, textarea, [data-cursor='hover']",
       );
       setHovering(Boolean(isInteractive));
     };
@@ -38,7 +41,7 @@ export default function CustomCursor() {
       document.removeEventListener("mouseleave", leave);
       document.removeEventListener("mouseenter", enter);
     };
-  }, [x, y, visible]);
+  }, [x, y]);
 
   return (
     <motion.div

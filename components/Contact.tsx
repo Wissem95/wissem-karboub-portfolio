@@ -11,12 +11,13 @@ const OrbScene = dynamic(() => import("./OrbScene"), { ssr: false });
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [sent, setSent] = useState(false);
+  const [opened, setOpened] = useState(false);
   const [sending, setSending] = useState(false);
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
     setSending(true);
+    setOpened(false);
     const subject = encodeURIComponent(`Contact portfolio — ${form.name}`);
     const body = encodeURIComponent(
       `${form.message}\n\n— ${form.name} (${form.email})`,
@@ -25,10 +26,9 @@ export default function Contact() {
 
     setTimeout(() => {
       setSending(false);
-      setSent(true);
+      setOpened(true);
       setTimeout(() => {
-        setSent(false);
-        setForm({ name: "", email: "", message: "" });
+        setOpened(false);
       }, 2500);
     }, 600);
   };
@@ -78,10 +78,14 @@ export default function Contact() {
         >
           <div className="grid gap-4 md:grid-cols-2">
             <div>
-              <label className="mb-2 block font-mono text-xs uppercase tracking-wider text-text-muted">
+              <label
+                htmlFor="contact-name"
+                className="mb-2 block font-mono text-xs uppercase tracking-wider text-text-muted"
+              >
                 Nom
               </label>
               <input
+                id="contact-name"
                 required
                 type="text"
                 placeholder="Votre nom"
@@ -91,10 +95,14 @@ export default function Contact() {
               />
             </div>
             <div>
-              <label className="mb-2 block font-mono text-xs uppercase tracking-wider text-text-muted">
+              <label
+                htmlFor="contact-email"
+                className="mb-2 block font-mono text-xs uppercase tracking-wider text-text-muted"
+              >
                 Email
               </label>
               <input
+                id="contact-email"
                 required
                 type="email"
                 placeholder="vous@example.com"
@@ -106,10 +114,14 @@ export default function Contact() {
           </div>
 
           <div>
-            <label className="mb-2 block font-mono text-xs uppercase tracking-wider text-text-muted">
+            <label
+              htmlFor="contact-message"
+              className="mb-2 block font-mono text-xs uppercase tracking-wider text-text-muted"
+            >
               Message
             </label>
             <textarea
+              id="contact-message"
               required
               rows={6}
               placeholder="Parlez-moi de votre projet..."
@@ -131,15 +143,15 @@ export default function Contact() {
               className="relative overflow-hidden rounded-full bg-accent px-8 py-3 font-syne text-sm font-bold text-bg transition-colors hover:bg-accent-dark disabled:opacity-60"
             >
               <AnimatePresence mode="wait">
-                {sent ? (
+                {opened ? (
                   <motion.span
-                    key="sent"
+                    key="opened"
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     className="block"
                   >
-                    ✓ Message envoyé
+                    Messagerie ouverte
                   </motion.span>
                 ) : sending ? (
                   <motion.span
@@ -149,7 +161,7 @@ export default function Contact() {
                     exit={{ opacity: 0, y: -10 }}
                     className="block"
                   >
-                    Envoi...
+                    Préparation...
                   </motion.span>
                 ) : (
                   <motion.span
@@ -159,7 +171,7 @@ export default function Contact() {
                     exit={{ opacity: 0, y: -10 }}
                     className="block"
                   >
-                    Envoyer →
+                    Ouvrir ma messagerie →
                   </motion.span>
                 )}
               </AnimatePresence>

@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test:portfolio": "node scripts/portfolio-smoke-test.mjs"
   },
   "dependencies": {
     "@react-three/drei": "^9.114.0",

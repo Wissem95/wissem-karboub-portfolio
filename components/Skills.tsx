@@ -13,7 +13,9 @@ const order: SkillCategory[] = [
   "Frontend",
   "Backend",
   "Infra & Data",
-  "Paiement & IA",
+  "Déploiement",
+  "Paiement & Services",
+  "IA & Agents",
   "Mobile",
   "Outils",
 ];
@@ -22,7 +24,9 @@ const categoryAccent: Record<SkillCategory, string> = {
   Frontend: "from-accent/30 to-transparent",
   Backend: "from-accent-dark/30 to-transparent",
   "Infra & Data": "from-accent/20 to-transparent",
-  "Paiement & IA": "from-accent/30 to-transparent",
+  Déploiement: "from-accent-dark/25 to-transparent",
+  "Paiement & Services": "from-accent/30 to-transparent",
+  "IA & Agents": "from-accent-dark/30 to-transparent",
   Mobile: "from-accent-dark/20 to-transparent",
   Outils: "from-accent/20 to-transparent",
 };
